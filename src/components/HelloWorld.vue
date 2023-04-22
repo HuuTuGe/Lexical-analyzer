@@ -57,30 +57,24 @@ export default {
         alert("您还未填入要分析的程序，请在左框内填入后再次点击此按钮。")
       }
       else {
+        var string = this.inputtext;
         axios({
           url: "http://localhost:8080/analyzer",
-          data: JSON.stringify(this.inputtext),
+          data: { string },
           method: "POST",
-          header: {
+          headers: {
             'Content-Type': 'application/json'
           }
         }).then(res => {
           console.log(res.data);
           console.log('POST请求成功');
         })
-        axios.get("http://localhost:8080/analyzer").then(function(response) {
-          this.outputtext = JSON.parse(response.data),
-            this.guesstext = JSON.parse(response.data),
-            console.log(response.data);
-        })
-          .catch(function(error) {
-            console.log(error);
-          });
+
         alert("已生成输出和符号表。")
       }
     },
     inputClear() {
-      this.inputtext = "";
+      this.inputtext = JSON.stringify(this.inputtext);
     },
   },
   components: {
