@@ -80,8 +80,7 @@ export default {
       }
     },
     inputClear() {
-      this.inputtext = JSON.stringify(this.inputtext);
-      alert("ok1");
+      this.inputtext = "";
     },
   },
   components: {
