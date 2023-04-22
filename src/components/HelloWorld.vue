@@ -27,12 +27,12 @@
       </div>
       <div class="outputbox_content">
         <div class="outputbox_text">
-          <textarea id="outputbox_primary" v-model="outputtext" cols="20" class="outputbox_text"></textarea>
+          <textarea id="outputbox_primary" v-model="outputtext" cols="20" readonly class="outputbox_text"></textarea>
         </div>
       </div>
       <div class="guessbox_content">
         <div class="guessbox_text">
-          <textarea id="guessbox_primary" v-model="guesstext" cols="20" class="guessbox_text"></textarea>
+          <textarea id="guessbox_primary" v-model="guesstext" cols="20" readonly class="guessbox_text"></textarea>
         </div>
       </div>
     </div>
