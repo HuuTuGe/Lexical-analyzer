@@ -41,13 +41,14 @@
 
 <script lang="js">
 import axios from 'axios'
+
 export default {
   name: 'hello',
   data() {
     return {
       inputtext: "",//输入
-      guesstext: "",//输出
-      outputtext: ""//符号表
+      outputtext: "",//输出
+      guesstext: ""//符号表
     };
   },
   methods: {
@@ -67,6 +68,8 @@ export default {
           }
         }).then(res => {
           console.log(res.data);
+          this.outputtext = res.data[0];
+          this.guesstext = res.data[1];
           console.log('POST请求成功');
         })
 
@@ -74,7 +77,7 @@ export default {
       }
     },
     inputClear() {
-      this.inputtext = JSON.stringify(this.inputtext);
+      this.inputtext = "";
     },
   },
   components: {
