@@ -72,8 +72,7 @@ export default {
           this.guesstext = res.data[1];
           console.log('POST请求成功');
         })
-
-        alert("已生成输出和符号表。")
+        window.setTimeout("alert('已生成输出和符号表。')", 500);
       }
     },
     inputClear() {
