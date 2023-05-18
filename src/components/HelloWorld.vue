@@ -18,7 +18,9 @@
       <div class="title_1">符号表guess.sym</div>
     </div>
     <div class="contents">
+
       <div class="inputbox_content">
+        <input type="file" id="files" name="file" multiple="multiple" @change="choosefile()">
         <textarea id="inputbox_primary" v-model="inputtext" placeholder="请在此处输入源程序" cols="20"
           class="inputbox_text"></textarea>
       </div>
@@ -41,7 +43,6 @@
 
 <script lang="js">
 import axios from 'axios'
-
 export default {
   name: 'hello',
   data() {
@@ -52,8 +53,8 @@ export default {
     };
   },
   methods: {
+
     motivate() {
-      window.console.log(this.inputtext)
       if (this.inputtext == "") {
         alert("您还未填入要分析的程序，请在左框内填入后再次点击此按钮。")
       }
@@ -78,11 +79,28 @@ export default {
     inputClear() {
       this.inputtext = "";
     },
+    choosefile() {
+      var fileList = document.getElementById('files').files;
+      var nameStr = '';
+      const that = this;
+      for (var i = 0; i < fileList.length; i++) {
+        nameStr += `${i === 0 ? '' : ', '}${fileList[i].name}`;
+        var reader = new FileReader();
+        reader.readAsText(fileList[i], "UTF-8");
+        reader.onload = function(e) {
+          var content = e.target.result;
+          console.log(content);
+          const textAreaVal = document.getElementById('inputbox_primary').value;
+          that.inputtext = textAreaVal + content;
+        }
+      }
+      console.log(1)
+    },
+
   },
   components: {
 
   }
-
 
 }
 
@@ -197,7 +215,7 @@ body {
 .running {
   float: left;
   width: 11%;
-  height: 600px;
+  height: 300px;
 }
 
 .play {
